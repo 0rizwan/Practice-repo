@@ -1,3 +1,26 @@
-.component {
-    background-color: yellow;
+.app {
+    text-align: center;
+}
+
+.productContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.productCard {
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paginationItem {
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid black;
+    cursor: pointer;
 }
