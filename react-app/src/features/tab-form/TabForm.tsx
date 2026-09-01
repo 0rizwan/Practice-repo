@@ -1,39 +1,26 @@
 import Profile from './components/Profile'
 import Interests from './components/Interests'
 import Settings from './components/Settings'
-import { useState, type Dispatch, type SetStateAction } from 'react'
+import { useState } from 'react'
 import styles from './TabForm.module.css'
-
-type tabType = {
-    name: string;
-    component: (props: { data: dataType; setData: Dispatch<SetStateAction<dataType>>, error: {} }) => React.JSX.Element;
-    validation: () => boolean;
-}
-
-export type dataType = {
-    name: string;
-    email: string;
-    age: number;
-    interest: string[];
-    theme: string;
-}
+import type { DataType, ErrorType, TabType } from './types'
 
 const TabForm = () => {
     const [currentTab, setCurrentTab] = useState(0);
-    const [error, setError] = useState({});
-    const [data, setData] = useState<dataType>({
+    const [error, setError] = useState<ErrorType>({});
+    const [data, setData] = useState<DataType>({
         "name": "john",
         "email": "john@gmail.com",
         "age": 24,
         "interest": ["football", "swimming", "coding"],
         "theme": "dark"
     });
-    const tabs: tabType[] = [
+    const tabs: TabType[] = [
         {
             "name": "Profile",
             "component": Profile,
             "validation": () => {
-                let err = {};
+                let err: ErrorType = {};
                 if (!data.name || data.name.length < 3) {
                     err.name = "Name is not valid";
                 }
@@ -51,7 +38,7 @@ const TabForm = () => {
             "name": "Interests",
             "component": Interests,
             "validation": () => {
-                let err = {};
+                let err: ErrorType = {};
                 if (data.interest.length < 1) {
                     err.interest = "Select any one interest";
                 }
@@ -64,20 +51,21 @@ const TabForm = () => {
             "component": Settings,
             "validation": () => true
         },
-    ]
+    ];
+
     const changeTab = (tabIndex: number) => {
         if (tabs[currentTab].validation()) {
             setCurrentTab(tabIndex);
         }
     }
+
     const handlePrev = () => {
-        if (tabs[currentTab].validation()) {
-            setCurrentTab(prev => prev - 1)
-        }
+        setCurrentTab(prev => Math.max(prev - 1, 0));
     }
+
     const handleNext = () => {
         if (tabs[currentTab].validation()) {
-            setCurrentTab(prev => prev + 1)
+            setCurrentTab(prev => Math.min(prev + 1, tabs.length - 1));
         }
     }
     const CurrentTab = tabs[currentTab].component;

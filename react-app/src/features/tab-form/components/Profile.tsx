@@ -1,11 +1,13 @@
-import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import type { dataType } from '../TabForm';
+import type { ChangeEvent } from 'react';
 import styles from '../TabForm.module.css'
+import type { TabProps } from '../types';
 
-const Profile = ({ data, setData, error }: { data: dataType, setData: Dispatch<SetStateAction<dataType>>, error: {} }) => {
+type ProfileField = "name" | "email" | "age";
+
+const Profile = ({ data, setData, error }: TabProps) => {
     const { name, email, age } = data;
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement, HTMLInputElement>, item: string) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>, item: ProfileField) => {
         setData((prevData) => ({
             ...prevData,
             [item]: e.target.value,

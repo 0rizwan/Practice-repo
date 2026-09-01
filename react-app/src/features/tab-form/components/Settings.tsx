@@ -1,7 +1,7 @@
-import type { ChangeEvent, Dispatch, SetStateAction } from "react";
-import type { dataType } from "../TabForm";
+import type { ChangeEvent } from "react";
+import type { TabProps } from "../types";
 
-const Settings = ({ data, setData }: { data: dataType, setData: Dispatch<SetStateAction<dataType>> }) => {
+const Settings = ({ data, setData }: TabProps) => {
     const { theme } = data;
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setData(prevData => ({
