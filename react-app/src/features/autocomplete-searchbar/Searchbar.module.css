@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchInput {
+    width: 350px;
+    padding: 10px;
+}
+
+.suggestionContainer {
+    width: 350px;
+    max-height: 400px;
+    overflow-y: scroll;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    cursor: default;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.option {
+    padding: 3px;
+    user-select: none;
+}
+
+.option:hover {
+    background-color: #f1f3f4;
+}

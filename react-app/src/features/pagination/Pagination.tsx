@@ -70,13 +70,12 @@ const Pagination = () => {
   const paginationItem = getPaginationItems(currentPage, totalPages);
 
   useEffect(() => {
-    console.log('RUN')
     fetchData();
   }, []);
 
   return (
     <div className={styles.app}>
-      <h1>Pagination Practice</h1>
+      <h1>Pagination</h1>
       <div>
         <button disabled={currentPage === 1} onClick={handlePrev}>Prev</button>
         {/* {[...Array(totalPages).keys()].map(item =>
