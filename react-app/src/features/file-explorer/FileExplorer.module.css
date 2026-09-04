@@ -1,0 +1,20 @@
+.fileContainer {
+    padding-left: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    user-select: none;
+    font-size: large;
+}
+
+.node {
+    display: flex;
+}
+
+.node:hover .actionIcons {
+    opacity: 1;
+}
+
+.actionIcons {
+    margin-left: 5px;
+    opacity: 0;
+}

@@ -4,6 +4,7 @@ import Searchbar from './features/autocomplete-searchbar/Searchbar.js';
 import ExpenseDashboard2 from './features/expense-dashboard/ExpenseDashboard2.js';
 import Pagination from './features/pagination/Pagination.js';
 import TabForm from './features/tab-form/TabForm.js';
+import FileExplorer from './features/file-explorer/FileExplorer.js';
 
 const features = {
   search: {
@@ -22,12 +23,16 @@ const features = {
     label: 'Tab Form',
     component: TabForm
   },
+  files: {
+    label: 'File Explorer',
+    component: FileExplorer
+  },
 };
 
 type FeatureName = keyof typeof features;
 
 const App = () => {
-  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('search');
+  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('files');
   const Feature = features[selectedFeature].component;
 
   return (

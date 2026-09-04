@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "name": "public",
+        "isFolder": true,
+        "children": [
+            {
+                "id": "2",
+                "name": "favicon.svg",
+                "isFolder": false
+            },
+            {
+                "id": "3",
+                "name": "icons.svg",
+                "isFolder": false
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "name": "src",
+        "isFolder": true,
+        "children": [
+            {
+                "id": "5",
+                "name": "components",
+                "isFolder": true,
+                "children": [
+                    {
+                        "id": "6",
+                        "name": "button.jsx",
+                        "isFolder": false
+                    },
+                    {
+                        "id": "7",
+                        "name": "header.jsx",
+                        "isFolder": false
+                    }
+                ]
+            },
+            {
+                "id": "8",
+                "name": "App.css",
+                "isFolder": false
+            },
+            {
+                "id": "9",
+                "name": "App.tsx",
+                "isFolder": false
+            }
+        ]
+    },
+    {
+        "id": "10",
+        "name": "package.json",
+        "isFolder": false
+    }
+]
