@@ -1,0 +1,14 @@
+
+.outer {
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.inner {
+    background-color: grey;
+    padding: 5px;
+    transition: 0.5s ease-in;
+    text-align: right;
+}

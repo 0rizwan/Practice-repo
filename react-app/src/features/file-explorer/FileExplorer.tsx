@@ -3,12 +3,20 @@ import json from './data.json';
 import styles from './FileExplorer.module.css';
 import { ChevronDown, ChevronRight, Folder, FolderOpen, File as FileIcon, FilePlus, FolderPlus, Pencil, Trash2 } from 'lucide-react';
 
-interface FileNode {
+type File = {
     id: string,
     name: string,
-    isFolder: boolean,
-    children?: FileNode[]
+    isFolder: false,
 }
+
+type Folder = {
+    id: string,
+    name: string,
+    isFolder: true,
+    children: FileNode[]
+}
+
+type FileNode = File | Folder;
 
 type FileTreeProps = {
     nodes: FileNode[],
@@ -87,7 +95,7 @@ const FileTree = ({ nodes, setIsAddingNode, setActiveNode, removeNode }: FileTre
                             </div>
                         </div>
                         {
-                            isExpanded[node.id] && node?.children &&
+                            isExpanded[node.id] && node.isFolder &&
                             <FileTree nodes={node.children} setIsAddingNode={setIsAddingNode} setActiveNode={setActiveNode} removeNode={removeNode} />
                         }
                     </div>
@@ -98,7 +106,7 @@ const FileTree = ({ nodes, setIsAddingNode, setActiveNode, removeNode }: FileTre
 }
 
 const FileExplorer = () => {
-    const [data, setData] = useState<FileNode[]>(json);
+    const [data, setData] = useState<FileNode[]>(json as FileNode[]);
     const [isAddingNode, setIsAddingNode] = useState("");
     const [nodeName, setNodeName] = useState("");
     const [fileExtension, setFileExtension] = useState("txt");
@@ -107,12 +115,13 @@ const FileExplorer = () => {
     const addNode = () => {
         const updateTree = (list: FileNode[]): FileNode[] => {
             return list.map((node) => {
-                if (node.id === activeNode) {
+                console.log(node);
+                if (node.id === activeNode && node.isFolder) {
                     if (isAddingNode === "folder") {
                         return {
                             ...node,
                             children: [
-                                ...node.children!,
+                                ...node.children,
                                 {
                                     id: Date.now().toString(),
                                     name: nodeName,
@@ -135,7 +144,7 @@ const FileExplorer = () => {
                         }
                     }
                 }
-                if (node.children) {
+                if (node.isFolder) {
                     return {
                         ...node,
                         children: updateTree(node.children)
@@ -154,7 +163,7 @@ const FileExplorer = () => {
     const removeNode = (nodeId: string) => {
         const deleteFromTree = (list: FileNode[]): FileNode[] => {
             return list.filter(node => node.id !== nodeId).map(node => {
-                if (node.children) {
+                if (node.isFolder) {
                     return {
                         ...node,
                         children: deleteFromTree(node.children),

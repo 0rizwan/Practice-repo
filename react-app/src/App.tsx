@@ -5,6 +5,7 @@ import ExpenseDashboard2 from './features/expense-dashboard/ExpenseDashboard2.js
 import Pagination from './features/pagination/Pagination.js';
 import TabForm from './features/tab-form/TabForm.js';
 import FileExplorer from './features/file-explorer/FileExplorer.js';
+import ProgressBar from './features/progress-bar/ProgressBar.js';
 
 const features = {
   search: {
@@ -27,12 +28,16 @@ const features = {
     label: 'File Explorer',
     component: FileExplorer
   },
+  progressBar: {
+    label: 'Progress Bar',
+    component: ProgressBar
+  },
 };
 
 type FeatureName = keyof typeof features;
 
 const App = () => {
-  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('files');
+  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('progressBar');
   const Feature = features[selectedFeature].component;
 
   return (
