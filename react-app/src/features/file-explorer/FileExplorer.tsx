@@ -69,7 +69,19 @@ const FileTree = ({ nodes, setIsAddingNode, setActiveNode, removeNode }: FileTre
                                 <button type="button" title="Edit">
                                     <Pencil size={18} />
                                 </button>
-                                <button type="button" title="Delete" onClick={() => removeNode(node.id)} >
+                                <button
+                                    type="button"
+                                    title="Delete"
+                                    onClick={() => {
+                                        const message = node.isFolder
+                                            ? `Are you sure you want to delete the folder "${node.name}" and all of its contents?`
+                                            : `Are you sure you want to delete "${node.name}"?`;
+
+                                        if (window.confirm(message)) {
+                                            removeNode(node.id);
+                                        }
+                                    }}
+                                >
                                     <Trash2 size={18} />
                                 </button>
                             </div>
