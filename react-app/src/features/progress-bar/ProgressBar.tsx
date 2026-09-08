@@ -1,15 +1,7 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import styles from './ProgressBar.module.css';
 
-const ProgressBarComponent = ({ progress }) => {
-    console.log(progress)
-    const [animatedProgress, setAnimatedProgress] = useState(0);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setAnimatedProgress(progress);
-    //     }, 100);
-    // }, [progress]);
+const ProgressBarComponent = ({ progress }: { progress: number }) => {
 
     return (
         <div className={styles.outer}>
@@ -20,6 +12,10 @@ const ProgressBarComponent = ({ progress }) => {
                     color: progress < 5 ? 'black' : 'white'
                 }}
                 className={styles.inner}
+                role='progressbar'
+                aria-valuenow={progress}
+                aria-valuemin={0}
+                aria-valuemax={100}
             >
                 {progress}%
             </div>
@@ -27,15 +23,25 @@ const ProgressBarComponent = ({ progress }) => {
     )
 }
 
-function reducer(state, action) {
-    if (action.type === "increment") {
-        return {
-            progress: state.progress + 10
-        };
-    } else {
-        return {
-            progress: state.progress - 10
-        }
+type State = {
+    progress: number;
+}
+
+type Action = {
+    type: "increment" | "decrement";
+}
+
+function reducer(state: State, action: Action): State {
+    switch (action.type) {
+        case "increment":
+            return {
+                progress: state.progress + 10
+            };
+
+        case "decrement":
+            return {
+                progress: state.progress - 10
+            };
     }
 }
 
