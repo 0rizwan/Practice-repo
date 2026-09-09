@@ -6,6 +6,7 @@ import Pagination from './features/pagination/Pagination.js';
 import TabForm from './features/tab-form/TabForm.js';
 import FileExplorer from './features/file-explorer/FileExplorer.js';
 import ProgressBar from './features/progress-bar/ProgressBar.js';
+import OtpInput from './features/otp-input/OtpInput.js';
 
 const features = {
   search: {
@@ -32,12 +33,16 @@ const features = {
     label: 'Progress Bar',
     component: ProgressBar
   },
+  otpInput: {
+    label: 'OTP Input',
+    component: OtpInput
+  },
 };
 
 type FeatureName = keyof typeof features;
 
 const App = () => {
-  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('progressBar');
+  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('otpInput');
   const Feature = features[selectedFeature].component;
 
   return (
