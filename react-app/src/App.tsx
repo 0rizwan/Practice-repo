@@ -7,6 +7,7 @@ import TabForm from './features/tab-form/TabForm.js';
 import FileExplorer from './features/file-explorer/FileExplorer.js';
 import ProgressBar from './features/progress-bar/ProgressBar.js';
 import OtpInput from './features/otp-input/OtpInput.js';
+import NestedCheckbox from './features/nested-checkbox/NestedCheckbox.js';
 
 const features = {
   search: {
@@ -37,12 +38,16 @@ const features = {
     label: 'OTP Input',
     component: OtpInput
   },
+  nestedCheckbox: {
+    label: 'Nested Checkbox',
+    component: NestedCheckbox
+  },
 };
 
 type FeatureName = keyof typeof features;
 
 const App = () => {
-  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('otpInput');
+  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('nestedCheckbox');
   const Feature = features[selectedFeature].component;
 
   return (
