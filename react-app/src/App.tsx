@@ -8,6 +8,7 @@ import FileExplorer from './features/file-explorer/FileExplorer.js';
 import ProgressBar from './features/progress-bar/ProgressBar.js';
 import OtpInput from './features/otp-input/OtpInput.js';
 import NestedCheckbox from './features/nested-checkbox/NestedCheckbox.js';
+import ChipsInput from './features/chips-input/ChipsInput.js';
 
 const features = {
   search: {
@@ -42,12 +43,16 @@ const features = {
     label: 'Nested Checkbox',
     component: NestedCheckbox
   },
+  chipsInput: {
+    label: 'Chips Input',
+    component: ChipsInput
+  },
 };
 
 type FeatureName = keyof typeof features;
 
 const App = () => {
-  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('nestedCheckbox');
+  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('chipsInput');
   const Feature = features[selectedFeature].component;
 
   return (

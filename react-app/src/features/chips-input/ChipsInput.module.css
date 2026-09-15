@@ -1,0 +1,23 @@
+.input {
+    padding: 5px;
+}
+
+.chipsContainer {
+    margin-top: 5px;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.chip {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 3px;
+    background-color: rgba(128, 128, 128, 0.412);
+    cursor: pointer;
+}
+
+.crossBtn {
+    margin-left: 10px;
+    color: red;
+}
