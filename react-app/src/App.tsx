@@ -9,6 +9,7 @@ import ProgressBar from './features/progress-bar/ProgressBar.js';
 import OtpInput from './features/otp-input/OtpInput.js';
 import NestedCheckbox from './features/nested-checkbox/NestedCheckbox.js';
 import ChipsInput from './features/chips-input/ChipsInput.js';
+import Accordion from './features/accordion/Accordion.js';
 
 const features = {
   search: {
@@ -47,12 +48,16 @@ const features = {
     label: 'Chips Input',
     component: ChipsInput
   },
+  accordion: {
+    label: 'Accordion',
+    component: Accordion
+  },
 };
 
 type FeatureName = keyof typeof features;
 
 const App = () => {
-  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('chipsInput');
+  const [selectedFeature, setSelectedFeature] = useState<FeatureName>('accordion');
   const Feature = features[selectedFeature].component;
 
   return (
